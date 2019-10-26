@@ -23,7 +23,7 @@ flight.o: crew.h
 	g++ -c flight.cpp
 
 clean:
-	rm *.o 
+	rm *.o main
 
 run:
 	./main
