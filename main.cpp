@@ -79,7 +79,7 @@ int main() {
 	cl.LoadCrew();
 
 
-	int choice;
+	int choice =0;
 
 	
 
@@ -201,7 +201,7 @@ int main() {
 		}
 
 
-	} while(mainMenu() != 0);
+	} while(choice != 0);
 
 	fl.SaveFlight();
 	pl.SavePlane();

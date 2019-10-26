@@ -37,7 +37,8 @@ void Crews::AddCrew(Crew c) {
 void Crews::EditCrew() {
 	
 	string id;
-	int c, index;
+	int c, index=0;
+	bool found = false;
 
 	cout<<"Please Enter Crew Id"<<endl;
 	cin >> id;
@@ -46,17 +47,24 @@ void Crews::EditCrew() {
 	for(vector<Crew>::iterator it=CrewList.begin();it!=CrewList.end();++it) {
 		
 		if((*it).GetID() == id) {
-
+			found = true;
 			cout << "Crew Member: " << (*it).GetName() << endl;
 			cout << "ID number: " << (*it).GetID() << endl;
 			cout << "Type: " << (*it).GetType() << endl;
 			cout << endl;
+
 			break;
-			index +=1;
+			
 		}
+		index +=1;
 	}
 
-	
+	//checks to make sure crew member found
+	if(!found) {
+
+		cout<<"Crew Member not found"<<endl;
+		return;
+	}
 
 	//menu for element selection
 	cout<<"--------------------------------------"<<endl;
@@ -68,9 +76,18 @@ void Crews::EditCrew() {
 	cout<<"| 2 - Type                           |"<<endl;
 	cout<<"--------------------------------------"<<endl;
 
+	cout<<"Enter element: ";
 	cin>>c;
 	string s;
 	
+	//checks for proper input
+	while(c > 2 || c < 0) {
+		cout<<"Invalid Choice"<<endl;
+		cout<<"Enter choice: ";
+		cin>>c;
+	}
+
+
 	if(c == 0) {
 
 		
