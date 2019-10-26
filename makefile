@@ -28,4 +28,8 @@ clean:
 run:
 	./main
 
+#deletes data files
+cleand:
+	rm *.data
+
 
