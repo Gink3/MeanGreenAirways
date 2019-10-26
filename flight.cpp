@@ -16,11 +16,11 @@ void Flight::SetNumPilots(int p) {
 void Flight::SetNumCrew(int c) {
     NumCrew = c;
 }
-void Flight::SetPilotIDs(vector<int> id) {
+void Flight::SetPilotIDs(vector<string> id) {
     PilotIDs = id;
 }
 
-void Flight::SetCrewIDs(vector<int> id) {
+void Flight::SetCrewIDs(vector<string> id) {
     CrewIDs = id;
 }
 
@@ -29,15 +29,14 @@ void Flight::AddPilot() {
 
     Crew p;
     string s;
-    int n;
 
     cout<<"Enter Pilot name: ";
     cin>>s;
     p.SetName(s);
 
     cout<<"Enter Pilot Id: ";
-    cin>>n;
-    p.SetID(n);
+    cin>>s;
+    p.SetID(s);
 
     p.SetType("Pilot");
 
@@ -49,7 +48,7 @@ void Flight::AddPilot() {
         return;
     }
 
-     for(vector<int>::iterator it=PilotIDs.begin();it!=PilotIDs.end();++it) {
+     for(vector<string>::iterator it=PilotIDs.begin();it!=PilotIDs.end();++it) {
         if((*it) == p.GetID()) {
             cout<<"Pilot Already Added"<<endl;
             return;
@@ -57,8 +56,8 @@ void Flight::AddPilot() {
      }
     PilotIDs.push_back(p.GetID());
 }
-void Flight::RemovePilot(int id) {
-    for(vector<int>::iterator it=PilotIDs.begin();it!=PilotIDs.end();++it) {
+void Flight::RemovePilot(string id) {
+    for(vector<string>::iterator it=PilotIDs.begin();it!=PilotIDs.end();++it) {
         if((*it) == id) {
             PilotIDs.erase(it);
             cout << "Successfully removed" << endl;
@@ -74,15 +73,15 @@ void Flight::AddCrew() {
     
     Crew c;
     string s;
-    int n;
+    
 
     cout<<"Enter Crew Member name: ";
     cin>>s;
     c.SetName(s);
 
     cout<<"Enter Crew Member ID:";
-    cin>>n;
-    c.SetID(n);
+    cin>>s;
+    c.SetID(s);
 
 
     if(c.GetType() != "Cabin") {
@@ -94,9 +93,9 @@ void Flight::AddCrew() {
 
 }
 
-void Flight::RemoveCrew(int id) {
+void Flight::RemoveCrew(string id) {
 
-     for(vector<int>::iterator it=CrewIDs.begin();it!=CrewIDs.end();++it) {
+     for(vector<string>::iterator it=CrewIDs.begin();it!=CrewIDs.end();++it) {
         if((*it) == id) {
             PilotIDs.erase(it);
             cout << "Successfully removed" << endl;
@@ -139,10 +138,10 @@ int Flight::GetNumPilots() {
 int Flight::GetNumCrew() {
     return NumCrew;
 }
-vector<int> Flight::GetPilotIDs() {
+vector<string> Flight::GetPilotIDs() {
     return PilotIDs;
 }
-vector<int> Flight::GetCrewIDs() {
+vector<string> Flight::GetCrewIDs() {
     return CrewIDs;
 }
 string Flight::GetStartTimeDate() {
@@ -166,14 +165,14 @@ string Flight::GetStatus() {
     return Status;
 }
 
-bool Flight::ContainsID(int id) {
+bool Flight::ContainsID(string id) {
 
-    for(vector<int>::iterator it=PilotIDs.begin();it!=PilotIDs.end();it++) {
+    for(vector<string>::iterator it=PilotIDs.begin();it!=PilotIDs.end();it++) {
         if((*it) == id) {
             return true;
         }
     }
-    for(vector<int>::iterator it=CrewIDs.begin();it!=CrewIDs.end();it++) {
+    for(vector<string>::iterator it=CrewIDs.begin();it!=CrewIDs.end();it++) {
         if((*it) == id) {
             return true;
         }

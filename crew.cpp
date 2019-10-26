@@ -8,7 +8,7 @@ void Crew::SetName(string n) {
     Name = n;
 }
 
-void Crew::SetID(int id) {
+void Crew::SetID(string id) {
   IDNum = id;
 }
 
@@ -20,7 +20,7 @@ string Crew::GetName() {
   return Name;
 }
 
-int Crew::GetID() {
+string Crew::GetID() {
   return IDNum;
 }
 

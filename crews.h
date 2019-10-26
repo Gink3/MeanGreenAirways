@@ -19,8 +19,8 @@ class Crews {
     void AddCrew(Crew c);
     void EditCrew();
     void DeleteCrew();       
-    void DeleteCrew(int id); //overload for preselected deletion
-    int FindCrew(int id);    //finds crew with certain id
+    void DeleteCrew(string id); //overload for preselected deletion
+    int FindCrew(string id);    //finds crew with certain id; returns index of crew
     void PrintAllCrew();     //prints all crew members
     void PrintCrew();        //prints a user selected member
 

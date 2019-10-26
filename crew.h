@@ -11,15 +11,15 @@ using namespace std;
 class Crew {
   private:
     string Name;
-    int IDNum;
+    string IDNum;
     string Type;
   public:
     void SetName(string n);
-    void SetID(int id);
+    void SetID(string id);
     void SetType(string t);
 
     string GetName();
-    int GetID();
+    string GetID();
     string GetType();
 
 

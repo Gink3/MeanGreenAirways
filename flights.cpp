@@ -13,8 +13,8 @@ void Flights::AddFlight() {
 	string Tail;
 	int NumP;
 	int NumC;
-	vector<int> PilotID;
-	vector<int> CrewID;
+	vector<string> PilotID;
+	vector<string> CrewID;
 	string StartTime;
 	string EndTime;
 	string StartCode;
@@ -33,7 +33,7 @@ void Flights::AddFlight() {
 	cout<<"Enter Number of Crew: ";
 	cin>>NumC;
 
-	int id;
+	string id;
 
 	for(int i=0;i<NumP;i++) {
 
@@ -128,8 +128,8 @@ void Flights::EditFlight() {
 
 	cin>>c;
 
-	vector<int> pID;
-	vector<int> cID;
+	vector<string> pID;
+	vector<string> cID;
 
 	switch(c) {
 		case 1:
@@ -272,13 +272,13 @@ void Flights::PrintAllFlights() {
 		cout<<"Number of Pilots: "<<FlightList[f].GetNumPilots()<<endl;
 		cout<<"Number of Crew: "<<FlightList[f].GetNumCrew()<<endl;
 		cout<<"Pilot IDs:"<<endl;
-		vector<int> pIDs = FlightList[f].GetPilotIDs();
+		vector<string> pIDs = FlightList[f].GetPilotIDs();
 
 		for(int i=0;i<FlightList[f].GetNumPilots();i++) {
 			cout<<pIDs[i]<< endl;
 		}
 		cout<<"Crew IDs: "<<endl;
-		vector<int> cIDs = FlightList[f].GetCrewIDs();
+		vector<string> cIDs = FlightList[f].GetCrewIDs();
 
 		for(int i=0;i<FlightList[f].GetNumCrew();i++) {
 			cout<<cIDs[i]<< endl;
@@ -318,13 +318,13 @@ void Flights::PrintFlight() {
 	cout<<"Number of Crew: "<<FlightList[f].GetNumCrew()<<endl;
 	
 	cout<<"Pilot IDs:"<<endl;
-	vector<int> pIDs = FlightList[f].GetPilotIDs();
+	vector<string> pIDs = FlightList[f].GetPilotIDs();
 	for(int i=0;i<FlightList[f].GetNumPilots();i++) {
 		cout<<pIDs[i]<< endl;
 	}
 
 	cout<<"Crew IDs: "<<endl;
-	vector<int> cIDs = FlightList[f].GetCrewIDs();
+	vector<string> cIDs = FlightList[f].GetCrewIDs();
 	for(int i=0;i<FlightList[f].GetNumCrew();i++) {
 		cout<<cIDs[i]<< endl;
 	}
@@ -344,13 +344,13 @@ void Flights::PrintFlight(int f) {
 	cout<<"Number of Crew: "<<FlightList[f].GetNumCrew()<<endl;
 	
 	cout<<"Pilot IDs:"<<endl;
-	vector<int> pIDs = FlightList[f].GetPilotIDs();
+	vector<string> pIDs = FlightList[f].GetPilotIDs();
 	for(int i=0;i<FlightList[f].GetNumPilots();i++) {
 		cout<<pIDs[i]<< endl;
 	}
 
 	cout<<"Crew IDs: "<<endl;
-	vector<int> cIDs = FlightList[f].GetCrewIDs();
+	vector<string> cIDs = FlightList[f].GetCrewIDs();
 	for(int i=0;i<FlightList[f].GetNumCrew();i++) {
 		cout<<cIDs[i]<< endl;
 	}
@@ -374,12 +374,12 @@ void Flights::SaveFlight() {
 		fout<< FlightList[f].GetNumPilots() <<endl;
 		fout<< FlightList[f].GetNumCrew() <<endl;
 
-		vector<int> pIDs = FlightList[f].GetPilotIDs();
+		vector<string> pIDs = FlightList[f].GetPilotIDs();
 		for(int i=0;i<FlightList[f].GetNumPilots();i++) {
 			fout<<pIDs[i]<< endl;
 		}
 
-		vector<int> cIDs = FlightList[f].GetCrewIDs();
+		vector<string> cIDs = FlightList[f].GetCrewIDs();
 		for(int i=0;i<FlightList[f].GetNumCrew();i++) {
 			fout<<cIDs[i]<< endl;
 		}
@@ -419,17 +419,17 @@ void Flights::LoadFlight() {
 
 
 
-		vector<int> pIDs;
+		vector<string> pIDs;
 		for(int i=0;i<tFlight.GetNumPilots();i++) {
-			fin>>n;
-			pIDs.push_back(n);
+			fin>>s;
+			pIDs.push_back(s);
 		}
 		tFlight.SetPilotIDs(pIDs);
 
-		vector<int> cIDs;
+		vector<string> cIDs;
 		for(int i=0;i<tFlight.GetNumCrew();i++) {
-			fin>>n;
-			cIDs.push_back(n);
+			fin>>s;
+			cIDs.push_back(s);
 		}
 		tFlight.SetCrewIDs(cIDs);
 
@@ -477,7 +477,7 @@ void Flights::DeleteByStatus(string s) {
 
 void Flights::PrintCrewAssignments() {
 
-	int id;
+	string id;
 
 	cout<<"Enter Crew ID: ";
 	cin>>id;
