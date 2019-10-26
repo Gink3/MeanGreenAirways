@@ -71,7 +71,7 @@ void Flights::AddFlight() {
 	cout<<"Enter Status: ";
 	cin>>fStatus;
 
-
+	//populates myflight obj
 	MyFlight.SetTailNum(Tail);
 	MyFlight.SetNumPilots(NumP);
 	MyFlight.SetNumCrew(NumC);
@@ -84,7 +84,7 @@ void Flights::AddFlight() {
 	MyFlight.SetNumPass(NumPass);
 	MyFlight.SetStatus(fStatus);
 
-
+	//appends myflight to flightlist vector
 	FlightList.push_back(MyFlight);
 	cout<<"Flight Added"<<endl;
 }
@@ -107,6 +107,7 @@ void Flights::EditFlight() {
 		}
 	}
 
+	//prints edit menu
 	cout<<"------------------------------------"<<endl;
 	cout<<"|  What would you like to edit?    |"<<endl;
 	cout<<"------------------------------------"<<endl;

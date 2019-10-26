@@ -24,6 +24,7 @@ void Flight::SetCrewIDs(vector<int> id) {
     CrewIDs = id;
 }
 
+//adds Crew Id given crew obj info
 void Flight::AddPilot() {
 
     Crew p;

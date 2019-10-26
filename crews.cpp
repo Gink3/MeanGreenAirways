@@ -5,6 +5,8 @@
 #include"crews.h"
 using namespace std;
 
+//adds a crew obj to the CrewList vector
+//given input from user
 void Crews::AddCrew(){
 
 	Crew c;
@@ -26,6 +28,9 @@ void Crews::AddCrew(){
 	CrewList.push_back(c);
 
 }
+
+//adds crew obj to CrewList Vector
+//given already made obj
 void Crews::AddCrew(Crew c) {
 	CrewList.push_back(c);
 }
