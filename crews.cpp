@@ -20,9 +20,9 @@ void Crews::AddCrew(){
 	cin>>s;
 	c.SetID(s);
 
-	cout<<"Enter Type(Pilot/Cabin): ";
+	cout<<"Enter Status: ";
 	cin>>s;
-	c.SetType(s);
+	c.SetStatus(s);
 
 	CrewList.push_back(c);
 
@@ -50,7 +50,7 @@ void Crews::EditCrew() {
 			found = true;
 			cout << "Crew Member: " << (*it).GetName() << endl;
 			cout << "ID number: " << (*it).GetID() << endl;
-			cout << "Type: " << (*it).GetType() << endl;
+			cout << "Status: " << (*it).GetStatus() << endl;
 			cout << endl;
 
 			break;
@@ -73,7 +73,7 @@ void Crews::EditCrew() {
 	cout<<"|                                    |"<<endl;
 	cout<<"| 0 - Name                           |"<<endl;
 	cout<<"| 1 - ID Number                      |"<<endl;
-	cout<<"| 2 - Type                           |"<<endl;
+	cout<<"| 2 - Status                         |"<<endl;
 	cout<<"--------------------------------------"<<endl;
 
 	cout<<"Enter element: ";
@@ -106,10 +106,10 @@ void Crews::EditCrew() {
 
 	} else if (c == 2) {
 
-		cout<<"Please Enter a new Type(Pilot/Cabin): "<<endl;
+		cout<<"Please Enter a new Status: "<<endl;
 		cin>>s;
-		CrewList[index].SetType(s);
-		cout<<"New Type Set"<<endl;
+		CrewList[index].SetStatus(s);
+		cout<<"New Status Set"<<endl;
 	}
 
 
@@ -162,7 +162,7 @@ void Crews::PrintAllCrew() {
 		
 	cout << "Crew Member: " << (*it).GetName() << endl;
 	cout << "ID number: " << (*it).GetID() << endl;
-	cout << "Type: " << (*it).GetType() << endl;
+	cout << "Status: " << (*it).GetStatus() << endl;
 	cout << endl;
 
 	}
@@ -178,7 +178,7 @@ void Crews::PrintCrew() {
 
 	cout << "Crew Member: " << CrewList[index].GetName() << endl;
 	cout << "ID number: " << CrewList[index].GetID() << endl;
-	cout << "Type: " << CrewList[index].GetType() << endl;
+	cout << "Status: " << CrewList[index].GetStatus() << endl;
 	cout << endl;
 
 }
@@ -193,7 +193,7 @@ void Crews::SaveCrew() {
 
 		fout<<CrewList[i].GetName()<<endl;
 		fout<<CrewList[i].GetID()<<endl;
-		fout<<CrewList[i].GetType()<<endl;
+		fout<<CrewList[i].GetStatus()<<endl;
 
 	}
 	fout.close();
@@ -219,7 +219,7 @@ void Crews::LoadCrew() {
 
 		MyCrew.SetName(CrewName);
 		MyCrew.SetID(CrewID);
-		MyCrew.SetType(CrewType);
+		MyCrew.SetStatus(CrewType);
 
 		CrewList.push_back(MyCrew);
 

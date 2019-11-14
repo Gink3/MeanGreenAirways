@@ -12,8 +12,8 @@ void Crew::SetID(string id) {
   IDNum = id;
 }
 
-void Crew::SetType(string t) {
-  Type = t;
+void Crew::SetStatus(string s) {
+  Status = s;
 }
 
 string Crew::GetName() {
@@ -24,6 +24,6 @@ string Crew::GetID() {
   return IDNum;
 }
 
-string Crew::GetType() {
-  return Type;
+string Crew::GetStatus() {
+  return Status;
 }

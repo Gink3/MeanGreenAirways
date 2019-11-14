@@ -9,18 +9,18 @@ using namespace std;
 
 
 class Crew {
-  private:
+  protected:
     string Name;
     string IDNum;
-    string Type;
+    string Status;
   public:
     void SetName(string n);
     void SetID(string id);
-    void SetType(string t);
+    void SetStatus(string s);
 
     string GetName();
     string GetID();
-    string GetType();
+    string GetStatus();
 
 
 };

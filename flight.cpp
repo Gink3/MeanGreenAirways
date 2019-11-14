@@ -38,13 +38,13 @@ void Flight::AddPilot() {
     cin>>s;
     p.SetID(s);
 
-    p.SetType("Pilot");
+    p.SetStatus("Pilot");
 
 
 
 
-    if(p.GetType() != "Pilot") {
-        cout<<"Error: Incorrect Crew Type" << endl;
+    if(p.GetStatus() != "Pilot") {
+        cout<<"Error: Incorrect Crew Status" << endl;
         return;
     }
 
@@ -84,7 +84,7 @@ void Flight::AddCrew() {
     c.SetID(s);
 
 
-    if(c.GetType() != "Cabin") {
+    if(c.GetStatus() != "Cabin") {
         cout<<"Error: Incorrect Crew Type" << endl;
         return;
     }
