@@ -22,6 +22,7 @@ class Crew {
     string GetID();
     string GetStatus();
 
+    virtual void PrintInfo();
 
 };
 

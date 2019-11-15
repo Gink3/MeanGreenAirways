@@ -3,6 +3,7 @@
 #include<vector>
 #include"crew.h"
 
+using namespace std;
 
 void Crew::SetName(string n) {
     Name = n;
@@ -26,4 +27,11 @@ string Crew::GetID() {
 
 string Crew::GetStatus() {
   return Status;
+}
+
+void Crew::PrintInfo(){
+	cout<<"Name: "<<Name<<endl;
+	cout<<"ID Number: "<<IDNum<<endl;
+	cout<<"Status: "<<Status<<endl;
+
 }
