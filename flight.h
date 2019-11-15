@@ -13,8 +13,8 @@ class Flight {
     string TailNum;
     int NumPilots; //flights with > 8 hours require 2 pilots and 2 co pilots
     int NumCrew;
-    vector<string> PilotIDs;
-    vector<string> CrewIDs;
+    vector<int> PilotIDs;
+    vector<int> CrewIDs;
     string StartTimeDate;
     string EndTimeDate;
     string StartAirportCode;
@@ -27,14 +27,14 @@ class Flight {
     void SetNumPilots(int p);
     void SetNumCrew(int c);
 
-    void SetPilotIDs(vector<string> id);
-    void SetCrewIDs(vector<string> id);
+    void SetPilotIDs(vector<int> id);
+    void SetCrewIDs(vector<int> id);
 
     void AddPilot();
-    void RemovePilot(string id);
+    void RemovePilot(int id);
 
     void AddCrew();
-    void RemoveCrew(string id);
+    void RemoveCrew(int id);
 
     void SetStartTimeDate(string start);
     void SetEndTimeDate(string end);
@@ -48,8 +48,8 @@ class Flight {
     string GetTailNum();
     int GetNumPilots();
     int GetNumCrew();
-    vector<string> GetPilotIDs();
-    vector<string> GetCrewIDs();
+    vector<int> GetPilotIDs();
+    vector<int> GetCrewIDs();
     string GetStartTimeDate();
     string GetEndTimeDate();
     string GetStartAirportCode();
@@ -57,7 +57,7 @@ class Flight {
     int GetNumPassengers();
     string GetStatus();
 
-    bool ContainsID(string id); //returns true if crew member id in either pilot/crew vectors
+    bool ContainsID(int id); //returns true if crew member id in either pilot/crew vectors
 
 };
 

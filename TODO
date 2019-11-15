@@ -1,6 +1,12 @@
 
 
-Fix the edit crew function
-Change crew id to string
+Implement Pilot class
+	* Added
+
+Implement CoPilot Class
+	* Added
+
+Implement Cabin Class
+Add Menu Options
 
 

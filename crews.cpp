@@ -11,14 +11,15 @@ void Crews::AddCrew(){
 
 	Crew c;
 	string s;
+	int n;
 
 	cout<<"Enter Crew Name: ";
 	cin>>s;
 	c.SetName(s);
 
 	cout<<"Enter ID Number: ";
-	cin>>s;
-	c.SetID(s);
+	cin>>n;
+	c.SetID(n);
 
 	cout<<"Enter Status: ";
 	cin>>s;
@@ -36,7 +37,7 @@ void Crews::AddCrew(Crew c) {
 
 void Crews::EditCrew() {
 	
-	string id;
+	int id;
 	int c, index=0;
 	bool found = false;
 
@@ -79,6 +80,7 @@ void Crews::EditCrew() {
 	cout<<"Enter element: ";
 	cin>>c;
 	string s;
+	int n;
 	
 	//checks for proper input
 	while(c > 2 || c < 0) {
@@ -100,8 +102,8 @@ void Crews::EditCrew() {
 	} else if (c == 1) {
 
 		cout<<"Please Enter a new ID" << endl;
-		cin>>s;
-		CrewList[index].SetID(s);
+		cin>>n;
+		CrewList[index].SetID(n);
 		cout<<"New ID Set"<<endl;
 
 	} else if (c == 2) {
@@ -116,7 +118,7 @@ void Crews::EditCrew() {
 }
 void Crews::DeleteCrew(){
 
-	string n;
+	int n;
 	cout<<"Enter Crew ID: ";
 	cin>>n; 
 
@@ -131,7 +133,7 @@ void Crews::DeleteCrew(){
 	}
 
 }
-void Crews::DeleteCrew(string id) {
+void Crews::DeleteCrew(int id) {
 
 	for(vector<Crew>::iterator it=CrewList.begin();it!=CrewList.end();++it) {
 		if((*it).GetID() == id) {
@@ -144,7 +146,7 @@ void Crews::DeleteCrew(string id) {
 	}
 
 }
-int Crews::FindCrew(string id) {
+int Crews::FindCrew(int id) {
 	int index=0;
 	for(vector<Crew>::iterator it=CrewList.begin();it!=CrewList.end();++it) {
 		index+=1;
@@ -170,7 +172,7 @@ void Crews::PrintAllCrew() {
 void Crews::PrintCrew() {
 
 	int index;
-	string n;
+	int n;
 	cout<<"Enter Crew Member ID: ";
 	cin>>n;
 
@@ -204,7 +206,7 @@ void Crews::LoadCrew() {
 	int size;
 	Crew MyCrew;
 	string CrewName;
-	string CrewID;
+	int CrewID;
 	string CrewType;
 
 	ifstream fin;
