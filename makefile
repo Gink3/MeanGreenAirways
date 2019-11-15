@@ -1,5 +1,5 @@
-main: main.o crews.o crew.o planes.o plane.o flight.o flights.o pilot.o
-	g++ -o main main.o crews.o crew.o planes.o plane.o flight.o flights.o pilot.o
+main: main.o crews.o crew.o planes.o plane.o flight.o flights.o pilot.o copilot.o
+	g++ -o main main.o crews.o crew.o planes.o plane.o flight.o flights.o pilot.o copilot.o
 
 main.o: plane.h flight.h crew.h
 	g++  -c main.cpp
@@ -24,6 +24,12 @@ flight.o: crew.h
 
 pilot.o: crew.h
 	g++ -c pilot.cpp crew.cpp
+
+copilot.o: crew.h
+	g++ -c copilot.cpp crew.cpp
+
+cabin.o: crew.h
+	g++ -c cabin.cpp crew.cpp
 
 clean:
 	rm *.o main
