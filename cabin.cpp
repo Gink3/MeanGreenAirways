@@ -1,4 +1,6 @@
 #include<iostream>
+#include<fstream>
+#include"cabin.h"
 #include"crew.h"
 
 void Cabin::SetPosition(string p) {
@@ -7,7 +9,18 @@ void Cabin::SetPosition(string p) {
 string Cabin::GetPosition(){
 	return Position;
 }
-void PrintInfo() {
+void Cabin::PrintInfo() {
 	Crew::PrintInfo();
 	cout<<"Position: "<<Position<<endl;
+}
+void Cabin::Save(){
+	
+		ofstream fout;
+		fout.open("crew.data");
+		
+		fout<<Position<<endl;
+		
+
+		fout.close();
+
 }

@@ -11,7 +11,7 @@ class Flights {
   private:
 
     int count;
-    vector<Flight> FlightList;
+    vector<Flight*> FlightList;
 
   public:
   	

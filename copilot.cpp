@@ -1,4 +1,5 @@
 #include<iostream>
+#include<fstream>
 #include"copilot.h"
 
 
@@ -19,4 +20,15 @@ void Copilot::PrintInfo() {
 	Crew::PrintInfo();
 	cout<<"Rating: "<<Rating<<endl;
 	cout<<"Cumulative Flight Hours: "<<flightHours<<endl;
+}
+void Copilot::Save(){
+	
+		ofstream fout;
+		fout.open("crew.data");
+		
+		fout<<Rating<<endl;
+		fout<<flightHours<<endl;
+
+		fout.close();
+
 }

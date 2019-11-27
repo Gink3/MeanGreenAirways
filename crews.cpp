@@ -9,29 +9,22 @@ using namespace std;
 //given input from user
 void Crews::AddCrew(){
 
-	Crew c;
-	string s;
-	int n;
+	cout<<"Enter Crew type: "<<endl;
+	cout<<"1 - Pilot"<<endl;
+	cout<<"2 - Copilot"<<endl;
+	cout<<"3 - Cabin"<<endl;
 
-	cout<<"Enter Crew Name: ";
-	cin>>s;
-	c.SetName(s);
+	
 
-	cout<<"Enter ID Number: ";
-	cin>>n;
-	c.SetID(n);
 
-	cout<<"Enter Status: ";
-	cin>>s;
-	c.SetStatus(s);
 
-	CrewList.push_back(c);
+	//TODO finish add crew
 
 }
 
 //adds crew obj to CrewList Vector
 //given already made obj
-void Crews::AddCrew(Crew c) {
+void Crews::AddCrew(Crew *c) {
 	CrewList.push_back(c);
 }
 
@@ -45,13 +38,13 @@ void Crews::EditCrew() {
 	cin >> id;
 
 	//outputs member if found
-	for(vector<Crew>::iterator it=CrewList.begin();it!=CrewList.end();++it) {
+	for(vector<Crew*>::iterator it=CrewList.begin();it!=CrewList.end();++it) {
 		
 		if((*it).GetID() == id) {
 			found = true;
-			cout << "Crew Member: " << (*it).GetName() << endl;
-			cout << "ID number: " << (*it).GetID() << endl;
-			cout << "Status: " << (*it).GetStatus() << endl;
+			cout << "Crew Member: " << (*it)->GetName() << endl;
+			cout << "ID number: " << (*it)->GetID() << endl;
+			cout << "Status: " << (*it)->GetStatus() << endl;
 			cout << endl;
 
 			break;
@@ -95,7 +88,7 @@ void Crews::EditCrew() {
 		
 		cout<<"Please Enter a new name: "<<endl;
 		cin>>s;
-		CrewList[index].SetName(s);
+		CrewList[index]->SetName(s);
 		cout<<"New Name Set"<<endl;
 
 
@@ -103,14 +96,14 @@ void Crews::EditCrew() {
 
 		cout<<"Please Enter a new ID" << endl;
 		cin>>n;
-		CrewList[index].SetID(n);
+		CrewList[index]->SetID(n);
 		cout<<"New ID Set"<<endl;
 
 	} else if (c == 2) {
 
 		cout<<"Please Enter a new Status: "<<endl;
 		cin>>s;
-		CrewList[index].SetStatus(s);
+		CrewList[index]->SetStatus(s);
 		cout<<"New Status Set"<<endl;
 	}
 
@@ -122,8 +115,8 @@ void Crews::DeleteCrew(){
 	cout<<"Enter Crew ID: ";
 	cin>>n; 
 
-	for(vector<Crew>::iterator it=CrewList.begin();it!=CrewList.end();++it) {
-		if((*it).GetID() == n) {
+	for(vector<Crew*>::iterator it=CrewList.begin();it!=CrewList.end();++it) {
+		if((*it)->GetID() == n) {
 			CrewList.erase(it);
 			cout << "Crew Member Deleted" <<endl;
 		} else {
@@ -135,8 +128,8 @@ void Crews::DeleteCrew(){
 }
 void Crews::DeleteCrew(int id) {
 
-	for(vector<Crew>::iterator it=CrewList.begin();it!=CrewList.end();++it) {
-		if((*it).GetID() == id) {
+	for(vector<Crew*>::iterator it=CrewList.begin();it!=CrewList.end();++it) {
+		if((*it)->GetID() == id) {
 			CrewList.erase(it);
 			cout << "Crew Member Deleted" <<endl;
 		} else {
@@ -148,9 +141,9 @@ void Crews::DeleteCrew(int id) {
 }
 int Crews::FindCrew(int id) {
 	int index=0;
-	for(vector<Crew>::iterator it=CrewList.begin();it!=CrewList.end();++it) {
+	for(vector<Crew*>::iterator it=CrewList.begin();it!=CrewList.end();++it) {
 		index+=1;
-		if((*it).GetID() == id) {
+		if((*it)->GetID() == id) {
 			return index;
 		}
 	}
@@ -160,11 +153,11 @@ int Crews::FindCrew(int id) {
 void Crews::PrintAllCrew() {
 
 	
-	for(vector<Crew>::iterator it=CrewList.begin();it!=CrewList.end();++it) {
+	for(vector<Crew*>::iterator it=CrewList.begin();it!=CrewList.end();++it) {
 		
-	cout << "Crew Member: " << (*it).GetName() << endl;
-	cout << "ID number: " << (*it).GetID() << endl;
-	cout << "Status: " << (*it).GetStatus() << endl;
+	cout << "Crew Member: " << (*it)->GetName() << endl;
+	cout << "ID number: " << (*it)->GetID() << endl;
+	cout << "Status: " << (*it)->GetStatus() << endl;
 	cout << endl;
 
 	}
@@ -178,9 +171,9 @@ void Crews::PrintCrew() {
 
 	index=FindCrew(n);
 
-	cout << "Crew Member: " << CrewList[index].GetName() << endl;
-	cout << "ID number: " << CrewList[index].GetID() << endl;
-	cout << "Status: " << CrewList[index].GetStatus() << endl;
+	cout << "Crew Member: " << CrewList[index]->GetName() << endl;
+	cout << "ID number: " << CrewList[index]->GetID() << endl;
+	cout << "Status: " << CrewList[index]->GetStatus() << endl;
 	cout << endl;
 
 }
@@ -193,12 +186,15 @@ void Crews::SaveCrew() {
 
 	for(int i=0;i<CrewList.size();i++) {
 
-		fout<<CrewList[i].GetName()<<endl;
-		fout<<CrewList[i].GetID()<<endl;
-		fout<<CrewList[i].GetStatus()<<endl;
+		fout<<CrewList[i]->GetName()<<endl;
+		fout<<CrewList[i]->GetID()<<endl;
+		fout<<CrewList[i]->GetStatus()<<endl;
+		
+		
 
 	}
 	fout.close();
+	
 }
 
 void Crews::LoadCrew() {

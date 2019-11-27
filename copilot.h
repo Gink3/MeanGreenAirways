@@ -15,7 +15,7 @@ class Copilot : public Crew {
 		int GetHours();
 
 		void PrintInfo();
-
+		void Save();
 };
 
 #endif

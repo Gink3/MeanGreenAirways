@@ -9,4 +9,8 @@ Implement CoPilot Class
 Implement Cabin Class
 Add Menu Options
 
+Change methods to support vectors of pointers
+	Finish add crew method
 
+Re-write save functions for 3 derived classes
+use base save/load

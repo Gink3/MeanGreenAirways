@@ -16,6 +16,7 @@ class Cabin : public Crew {
 		string GetPosition();
 
 		void PrintInfo();
+		void Save();
 };
 
 

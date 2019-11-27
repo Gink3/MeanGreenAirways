@@ -23,7 +23,7 @@ class Crew {
     string GetStatus();
 
     virtual void PrintInfo();
-
+    virtual void Save();
 };
 
 #endif

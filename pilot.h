@@ -3,6 +3,7 @@
 
 #include<iostream>
 #include<string>
+#include<fstream>
 #include"crew.h"
 
 class Pilot : public Crew {
@@ -17,6 +18,8 @@ class Pilot : public Crew {
 		int GetHours();
 
 		void PrintInfo();
+
+		void Save();
 };
 
 

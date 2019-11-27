@@ -1,4 +1,5 @@
 #include<iostream>
+#include<fstream>
 #include<string>
 #include<vector>
 #include"crew.h"
@@ -34,4 +35,19 @@ void Crew::PrintInfo(){
 	cout<<"ID Number: "<<IDNum<<endl;
 	cout<<"Status: "<<Status<<endl;
 
+}
+void Crew::Save() {
+
+	ofstream fout;
+	fout.open("crew.data");
+	
+
+	fout<<GetName()<<endl;
+	fout<<GetID()<<endl;
+	fout<<GetStatus()<<endl;
+	
+
+
+	fout.close();
+	
 }

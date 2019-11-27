@@ -18,3 +18,14 @@ void Pilot::PrintInfo(){
 	cout<<"Rating: "<<Rating<<endl;
 	cout<<"Cumulative Flight Hours: "<<flightHours<<endl;
 }
+void Pilot::Save(){
+	
+		ofstream fout;
+		fout.open("crew.data");
+		
+		fout<<Rating<<endl;
+		fout<<flightHours<<endl;
+
+		fout.close();
+
+}
