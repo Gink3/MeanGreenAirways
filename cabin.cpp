@@ -6,8 +6,14 @@
 void Cabin::SetPosition(CabinPosition p) {
 	Position = p;
 }
+void Cabin::SetPosition(int p) {
+	Position = static_cast<CabinPosition>(p);
+}
 CabinPosition Cabin::GetPosition(){
 	return Position;
+}
+string Cabin::GetCrewType() {
+	return "Cabin";
 }
 void Cabin::PrintInfo() {
 	Crew::PrintInfo();

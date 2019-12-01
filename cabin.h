@@ -14,8 +14,10 @@ class Cabin : public Crew {
 
 	public:
 		void SetPosition(CabinPosition p);
+		void SetPosition(int p);
 		CabinPosition GetPosition();
 
+		string GetCrewType();
 		void PrintInfo();
 		void SaveInfo(ofstream &fout);
 };

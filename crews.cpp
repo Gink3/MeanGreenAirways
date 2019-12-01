@@ -9,16 +9,114 @@ using namespace std;
 //given input from user
 void Crews::AddCrew(){
 
+	string name, status;
+	int type, id;
+
 	cout<<"Enter Crew type: "<<endl;
 	cout<<"1 - Pilot"<<endl;
 	cout<<"2 - Copilot"<<endl;
 	cout<<"3 - Cabin"<<endl;
 
 	
+	do {
+		cout<<"--------------------------------------"<<endl;
+		cout<<"| Enter Crew Type                    |"<<endl;
+		cout<<"--------------------------------------"<<endl;
+		cout<<"|                                    |"<<endl;
+		cout<<"| 0 - Pilot                          |"<<endl;
+		cout<<"| 1 - Copilot                        |"<<endl;
+		cout<<"| 2 - Cabin                          |"<<endl;
+		cout<<"|                                    |"<<endl;
+		cout<<"--------------------------------------"<<endl;
+		cin>>type;
+	} while(type < 0 || type > 2);
 
 
+	cout<<"Enter Name: ";
+	cin>>name;
+	cout<<"Enter ID: ";
+	cin>>id;
+	cout<<"Enter Status: ";
+	cin>>status;
 
-	//TODO finish add crew
+
+	switch(type) {
+		case 0: {
+			Pilot *temp;
+			string Rating;
+			int flightHours;
+			do {
+				cout<<"Enter 5 character Rating: ";
+				cin>>Rating;
+			} while(Rating.length() != 5);
+
+			cout<<"Enter flight hours: ";
+			cin>>flightHours;
+
+			temp->SetName(name);
+			temp->SetID(id);
+			temp->SetStatus(status);
+			temp->SetRating(Rating);
+			temp->SetHours(flightHours);
+
+			CrewList.push_back(temp);
+
+			break;
+		}
+		case 1: {
+			Copilot *temp;
+			string Rating;
+			int flightHours;
+			do {
+				cout<<"Enter 4 character Rating: ";
+				cin>>Rating;
+			} while(Rating.length() != 4);
+
+			cout<<"Enter flight hours: ";
+			cin>>flightHours;
+
+			temp->SetName(name);
+			temp->SetID(id);
+			temp->SetStatus(status);
+			temp->SetRating(Rating);
+			temp->SetHours(flightHours);
+
+			CrewList.push_back(temp);
+
+			break;
+		}
+		case 2: {
+			Cabin *temp;
+			int p;
+			CabinPosition pos;
+
+			do {
+				cout<<"--------------------------------------"<<endl;
+				cout<<"| Enter Crew Position                |"<<endl;
+				cout<<"--------------------------------------"<<endl;
+				cout<<"|                                    |"<<endl;
+				cout<<"| 0 - First Class                    |"<<endl;
+				cout<<"| 1 - Business Class                 |"<<endl;
+				cout<<"| 2 - Economy Front                  |"<<endl;
+				cout<<"| 3 - Economy Rear                   |"<<endl;
+				cout<<"| 4 - Lead                           |"<<endl;
+				cout<<"--------------------------------------"<<endl;
+				cin>>p;
+			} while (p > 4 || p < 0);
+			pos=static_cast<CabinPosition>(p);
+
+			temp->SetName(name);
+			temp->SetID(id);
+			temp->SetStatus(status);
+			temp->SetPosition(pos);
+
+			CrewList.push_back(temp);
+
+			break;
+		}
+	}
+
+	
 
 }
 
@@ -30,84 +128,128 @@ void Crews::AddCrew(Crew *c) {
 
 void Crews::EditCrew() {
 	
-	int id;
-	int c, index=0;
-	bool found = false;
+	int id, status, flightHours, p;
+	int choice, index, c=2;
+	string type, name, rating;
 
 	cout<<"Please Enter Crew Id"<<endl;
 	cin >> id;
 
-	//outputs member if found
-	for(vector<Crew*>::iterator it=CrewList.begin();it!=CrewList.end();++it) {
-		
-		if((*it)->GetID() == id) {
-			found = true;
-			cout << "Crew Member: " << (*it)->GetName() << endl;
-			cout << "ID number: " << (*it)->GetID() << endl;
-			cout << "Status: " << (*it)->GetStatus() << endl;
-			cout << endl;
-
-			break;
-			
-		}
-		index +=1;
-	}
-
-	//checks to make sure crew member found
-	if(!found) {
-
-		cout<<"Crew Member not found"<<endl;
+	index = FindCrew(id);
+	if (index == -1) {
 		return;
 	}
+	CrewList[index]->PrintInfo();
+	type = CrewList[index]->GetCrewType();
 
-	//menu for element selection
-	cout<<"--------------------------------------"<<endl;
-	cout<<"| Please Select the element to Edit  |"<<endl;
-	cout<<"--------------------------------------"<<endl;
-	cout<<"|                                    |"<<endl;
-	cout<<"| 0 - Name                           |"<<endl;
-	cout<<"| 1 - ID Number                      |"<<endl;
-	cout<<"| 2 - Status                         |"<<endl;
-	cout<<"--------------------------------------"<<endl;
-
-	cout<<"Enter element: ";
-	cin>>c;
-	string s;
-	int n;
-	
-	//checks for proper input
-	while(c > 2 || c < 0) {
-		cout<<"Invalid Choice"<<endl;
-		cout<<"Enter choice: ";
-		cin>>c;
-	}
-
-
-	if(c == 0) {
-
+	do {
+		cout<<"--------------------------------------"<<endl;
+		cout<<"| Enter Attribute to edit            |"<<endl;
+		cout<<"--------------------------------------"<<endl;
+		cout<<"|                                    |"<<endl;
+		cout<<"| 0 - Name                           |"<<endl;
+		cout<<"| 1 - ID                             |"<<endl;
+		cout<<"| 2 - Status                         |"<<endl;
 		
-		cout<<"Please Enter a new name: "<<endl;
-		cin>>s;
-		CrewList[index]->SetName(s);
-		cout<<"New Name Set"<<endl;
+		
 
+		if(type=="Pilot" || type=="Copilot") {
+			cout<<"| 3 - Rating                         |"<<endl;
+			cout<<"| 4 - Flight Hours                   |"<<endl;
+			cout<<"|                                    |"<<endl;
+			cout<<"--------------------------------------"<<endl;
+			c=4;
+		} else if (type=="Cabin") {
+			cout<<"| 3 - Position                       |"<<endl;
+			cout<<"|                                    |"<<endl;
+			cout<<"--------------------------------------"<<endl;
+			c=3;
+		}
+	} while(choice < 0 || choice > c);
 
-	} else if (c == 1) {
-
-		cout<<"Please Enter a new ID" << endl;
-		cin>>n;
-		CrewList[index]->SetID(n);
-		cout<<"New ID Set"<<endl;
-
-	} else if (c == 2) {
-
-		cout<<"Please Enter a new Status: "<<endl;
-		cin>>s;
-		CrewList[index]->SetStatus(s);
-		cout<<"New Status Set"<<endl;
+	if(c > 2) {
+		if(type=="Pilot") {
+			
+			if (c == 3) {
+				do {
+					cout<<"Enter 5 character Rating: ";
+					cin>>rating;
+					CrewList[index]->SetRating(rating);
+					cout<<"Rating Set"<<endl;
+				} while(rating.length() != 5);
+			} else if (c == 4) {
+				cout<<"Enter flight hours: ";
+				cin>>flightHours;
+				CrewList[index]->SetHours(flightHours);
+				cout<<"Flight Hours Set"<<endl;
+			} else {
+				cout<<"Error choice = "<<c<<endl;
+			}
+		} else if (type=="Copilot") {
+			if(c==3) {
+				do {
+					cout<<"Enter 4 character Rating: ";
+					cin>>rating;
+					CrewList[index]->SetRating(rating);
+					cout<<"Rating Set"<<endl;
+				} while(rating.length() != 4);
+			} else if (c == 4) {
+				cout<<"Enter flight hours: ";
+				cin>>flightHours;
+				CrewList[index]->SetHours(flightHours);
+				cout<<"Flight Hours Set"<<endl;
+			} else {
+				cout<<"Error choice = "<<c<<endl;
+			}
+		} else if (type =="Cabin") {
+			do {
+				cout<<"--------------------------------------"<<endl;
+				cout<<"| Enter Crew Position                |"<<endl;
+				cout<<"--------------------------------------"<<endl;
+				cout<<"|                                    |"<<endl;
+				cout<<"| 0 - First Class                    |"<<endl;
+				cout<<"| 1 - Business Class                 |"<<endl;
+				cout<<"| 2 - Economy Front                  |"<<endl;
+				cout<<"| 3 - Economy Rear                   |"<<endl;
+				cout<<"| 4 - Lead                           |"<<endl;
+				cout<<"--------------------------------------"<<endl;
+				cin>>p;
+			} while (p > 4 || p < 0);
+			CrewList[index]->SetPosition(p);
+			cout<<"Position Set"<<endl;
+		}
+	} else {
+		switch(c) {
+			case 0: {
+				cout<<"Enter Name: ";
+				cin>>name;
+				CrewList[index]->SetName(name);
+				cout<<"Name Set"<<endl;
+			}
+			case 1: {
+				cout<<"Enter ID: ";
+				cin>>id;
+				CrewList[index]->SetID(id);
+				cout<<"ID set"<<endl;
+			}
+			case 2: {
+				do {
+					cout<<"--------------------------------------"<<endl;
+					cout<<"| Select Status                      |"<<endl;
+					cout<<"--------------------------------------"<<endl;
+					cout<<"|                                    |"<<endl;
+					cout<<"| 0 - Available                      |"<<endl;
+					cout<<"| 1 - On Leave                       |"<<endl;
+					cout<<"| 2 - Sick                           |"<<endl;
+					cout<<"|                                    |"<<endl;
+					cout<<"--------------------------------------"<<endl;
+					cin>>status;
+					CrewList[index]->SetStatus(status);
+				} while (status > 2 || status < 0);
+				
+			} 
+		}
 	}
-
-
 }
 void Crews::DeleteCrew(){
 
@@ -120,11 +262,9 @@ void Crews::DeleteCrew(){
 			CrewList.erase(it);
 			cout << "Crew Member Deleted" <<endl;
 		} else {
-
 			cout<<"Crew Member not found"<<endl;
 		}
 	}
-
 }
 void Crews::DeleteCrew(int id) {
 
@@ -191,14 +331,12 @@ void Crews::SaveCrew() {
 
 	}
 	fout.close();
-	
 }
 
 void Crews::LoadCrew() {
 
-	int size, CrewID;
-	Crew MyCrew;
-	string CrewType, CrewName, CrewStatus;
+	int size, CrewID, CrewStatus;
+	string CrewType, CrewName;
 
 	ifstream fin;
 	fin.open("crew.data");
@@ -238,7 +376,7 @@ void Crews::LoadCrew() {
 			Cabin *temp;
 			int p;
 			CabinPosition Pos;
-
+			
 			fin>>p;
 			Pos=static_cast<CabinPosition>(p);
 

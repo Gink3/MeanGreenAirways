@@ -20,6 +20,7 @@ class Pilot : public Crew {
 		void PrintInfo();
 
 		void SaveInfo(ofstream &fout);
+		string GetCrewType();
 };
 
 

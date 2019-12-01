@@ -17,6 +17,7 @@ class Copilot : public Crew {
 
 		void PrintInfo();
 		void SaveInfo(ofstream &fout);
+		string GetCrewType();
 };
 
 #endif

@@ -19,13 +19,19 @@ class Crew {
     void SetName(string n);
     void SetID(int id);
     void SetStatus(string s);
+    void SetStatus(int n);
 
     string GetName();
     int GetID();
     string GetStatus();
+    int GetStatusInt();
 
     virtual void PrintInfo();
     virtual void SaveInfo(ofstream &fout);
+    virtual void SetRating(string r) = 0;
+    virtual void SetHours(int h) = 0;
+    virtual void SetPosition(int p) =0;
+    virtual string GetCrewType();
 };
 
 #endif

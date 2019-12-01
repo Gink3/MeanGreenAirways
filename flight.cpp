@@ -24,40 +24,11 @@ void Flight::SetCrewIDs(vector<int> id) {
     CrewIDs = id;
 }
 
-//adds Crew Id given crew obj info
-void Flight::AddPilot() {
-
-    Crew p;
-    string s;
-    int n;
-
-    cout<<"Enter Pilot name: ";
-    cin>>s;
-    p.SetName(s);
-
-    cout<<"Enter Pilot Id: ";
-    cin>>n;
-    p.SetID(n);
-
-    p.SetStatus("Pilot");
-
-
-
-
-    if(p.GetStatus() != "Pilot") {
-        cout<<"Error: Incorrect Crew Status" << endl;
-        return;
-    }
-
-     for(vector<int>::iterator it=PilotIDs.begin();it!=PilotIDs.end();++it) {
-        if((*it) == p.GetID()) {
-            cout<<"Pilot Already Added"<<endl;
-            return;
-        }
-     }
-    PilotIDs.push_back(p.GetID());
+void Flight::AddPilotID(int n ) {
+    PilotIDs.push_back(n);
 }
-void Flight::RemovePilot(int id) {
+
+void Flight::RemovePilotID(int id) {
     for(vector<int>::iterator it=PilotIDs.begin();it!=PilotIDs.end();++it) {
         if((*it) == id) {
             PilotIDs.erase(it);
@@ -69,30 +40,21 @@ void Flight::RemovePilot(int id) {
 
 
 }
-
-void Flight::AddCrew() {
-    
-    Crew c;
-    string s;
-    int n;
-    
-
-    cout<<"Enter Crew Member name: ";
-    cin>>s;
-    c.SetName(s);
-
-    cout<<"Enter Crew Member ID:";
-    cin>>n;
-    c.SetID(n);
-
-
-    if(c.GetStatus() != "Cabin") {
-        cout<<"Error: Incorrect Crew Type" << endl;
-        return;
+void Flight::AddCopilotID(int n) {
+    CopilotIDs.push_back(n);
+}
+void Flight::RemoveCopilotId(int n) {
+    for(vector<int>::iterator it=CopilotIDs.begin();it!=CopilotIDs.end();it++) {
+        if(*it == n) {
+            CopilotIDs.erase(it);
+            cout<<"Successfully removed"<<endl;
+            break;
+        }
     }
-
-    CrewIDs.push_back(c.GetID());
-
+    cout<<"Not found"<<endl;
+}
+void Flight::AddCrewID(int n) {
+    CrewIDs.push_back(n);
 }
 
 void Flight::RemoveCrew(int id) {

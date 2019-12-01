@@ -27,3 +27,6 @@ void Copilot::SaveInfo(ofstream &fout){
 		fout<<Rating<<endl;
 		fout<<flightHours<<endl;
 }
+string Copilot::GetCrewType() {
+  return "Copilot";
+}

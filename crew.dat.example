@@ -1,0 +1,18 @@
+3           //number of crew
+cabin       //Crew type
+Taylr       //name
+12          //ID
+Sick        //Status
+Lead        //Position
+copilot
+Mithcell
+9
+available
+AAAA        //4 character rating
+20          //flight hours
+pilot
+Allie
+1
+available
+AAAAA       //5 character rating
+30          //flight hours

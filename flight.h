@@ -14,6 +14,7 @@ class Flight {
     int NumPilots; //flights with > 8 hours require 2 pilots and 2 co pilots
     int NumCrew;
     vector<int> PilotIDs;
+    vector<int> CopilotIDs;
     vector<int> CrewIDs;
     string StartTimeDate;
     string EndTimeDate;
@@ -30,10 +31,13 @@ class Flight {
     void SetPilotIDs(vector<int> id);
     void SetCrewIDs(vector<int> id);
 
-    void AddPilot();
-    void RemovePilot(int id);
+    void AddPilotID(int n);
+    void RemovePilotID(int id);
 
-    void AddCrew();
+    void AddCopilotID(int n);
+    void RemoveCopilotId(int n);
+
+    void AddCrewID(int n);
     void RemoveCrew(int id);
 
     void SetStartTimeDate(string start);

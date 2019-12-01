@@ -27,3 +27,6 @@ void Pilot::SaveInfo(ofstream &fout){
 		
 
 }
+string Pilot::GetCrewType() {
+  return "Pilot";
+}
