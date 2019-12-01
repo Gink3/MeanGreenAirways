@@ -5,6 +5,9 @@
 #include<string>
 #include<vector>
 #include"crew.h"
+#include"cabin.h"
+#include"pilot.h"
+#include"copilot.h"
 
 using namespace std;
 

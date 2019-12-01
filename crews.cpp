@@ -196,19 +196,63 @@ void Crews::SaveCrew() {
 
 void Crews::LoadCrew() {
 
-	int size;
+	int size, CrewID;
 	Crew MyCrew;
-	string CrewName;
-	int CrewID;
-	string CrewType;
+	string CrewType, CrewName, CrewStatus;
 
 	ifstream fin;
 	fin.open("crew.data");
 	fin>>size;
 
 	for(int i=0;i<size;i++){
-
+		fin>>CrewType>>CrewName>>CrewID>>CrewStatus;
 		
+
+		if(CrewType=="pilot") {
+			Pilot *temp;
+			string Rating;
+			int flightHours;
+			fin>>Rating>>flightHours;
+
+			temp->SetName(CrewName);
+			temp->SetID(CrewID);
+			temp->SetStatus(CrewStatus);
+			temp->SetRating(Rating);
+			temp->SetHours(flightHours);
+
+			CrewList.push_back(temp);
+		} else if (CrewType=="copilot") {
+			Copilot *temp;
+			string Rating;
+			int flightHours;
+			fin>>Rating>>flightHours;
+
+			temp->SetName(CrewName);
+			temp->SetID(CrewID);
+			temp->SetStatus(CrewStatus);
+			temp->SetRating(Rating);
+			temp->SetHours(flightHours);
+
+			CrewList.push_back(temp);
+		} else if (CrewType=="cabin") {
+			Cabin *temp;
+			int p;
+			CabinPosition Pos;
+
+			fin>>p;
+			Pos=static_cast<CabinPosition>(p);
+
+			temp->SetName(CrewName);
+			temp->SetID(CrewID);
+			temp->SetStatus(CrewStatus);
+			temp->SetPosition(Pos);
+
+			CrewList.push_back(temp);
+		} else {
+			cout<<"Error: Invalid Crew Type"<<endl;
+		}
+		
+
 	}
 
 	fin.close();

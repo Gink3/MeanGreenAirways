@@ -5,7 +5,7 @@
 #include<string>
 #include<fstream>
 #include"crew.h"
-
+using namespace std;
 class Pilot : public Crew {
 	private:
 		string Rating;

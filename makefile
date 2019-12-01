@@ -1,5 +1,5 @@
-main: main.o crews.o crew.o planes.o plane.o flight.o flights.o pilot.o copilot.o
-	g++ -o main main.o crews.o crew.o planes.o plane.o flight.o flights.o pilot.o copilot.o
+main: main.o crews.o crew.o planes.o plane.o flight.o flights.o pilot.o copilot.o cabin.o
+	g++ -o main main.o crews.o crew.o planes.o plane.o flight.o flights.o pilot.o copilot.o cabin.o
 
 main.o: plane.h flight.h crew.h
 	g++  -c main.cpp

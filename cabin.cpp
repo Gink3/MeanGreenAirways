@@ -3,10 +3,10 @@
 #include"cabin.h"
 #include"crew.h"
 
-void Cabin::SetPosition(string p) {
+void Cabin::SetPosition(CabinPosition p) {
 	Position = p;
 }
-string Cabin::GetPosition(){
+CabinPosition Cabin::GetPosition(){
 	return Position;
 }
 void Cabin::PrintInfo() {
