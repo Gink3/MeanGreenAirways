@@ -9,7 +9,7 @@
 class Planes {
   private:
     int count;
-    vector<Plane*> PlaneList;
+    vector<Plane> PlaneList;
 
   public:
 

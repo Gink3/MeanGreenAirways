@@ -36,18 +36,10 @@ void Crew::PrintInfo(){
 	cout<<"Status: "<<Status<<endl;
 
 }
-void Crew::Save() {
-
-	ofstream fout;
-	fout.open("crew.data");
-	
+void Crew::SaveInfo(ofstream &fout) {
 
 	fout<<GetName()<<endl;
 	fout<<GetID()<<endl;
 	fout<<GetStatus()<<endl;
-	
 
-
-	fout.close();
-	
 }

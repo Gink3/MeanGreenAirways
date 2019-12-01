@@ -13,14 +13,12 @@ void Cabin::PrintInfo() {
 	Crew::PrintInfo();
 	cout<<"Position: "<<Position<<endl;
 }
-void Cabin::Save(){
-	
-		ofstream fout;
-		fout.open("crew.data");
-		
-		fout<<Position<<endl;
+void Cabin::SaveInfo(ofstream &fout){
+	fout<<"cabin"<<endl;
+	Crew::SaveInfo(fout);	
+	fout<<Position<<endl;
 		
 
-		fout.close();
+		
 
 }

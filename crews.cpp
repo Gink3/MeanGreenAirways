@@ -40,7 +40,7 @@ void Crews::EditCrew() {
 	//outputs member if found
 	for(vector<Crew*>::iterator it=CrewList.begin();it!=CrewList.end();++it) {
 		
-		if((*it).GetID() == id) {
+		if((*it)->GetID() == id) {
 			found = true;
 			cout << "Crew Member: " << (*it)->GetName() << endl;
 			cout << "ID number: " << (*it)->GetID() << endl;
@@ -186,10 +186,7 @@ void Crews::SaveCrew() {
 
 	for(int i=0;i<CrewList.size();i++) {
 
-		fout<<CrewList[i]->GetName()<<endl;
-		fout<<CrewList[i]->GetID()<<endl;
-		fout<<CrewList[i]->GetStatus()<<endl;
-		
+		CrewList[i]->SaveInfo(fout);
 		
 
 	}
@@ -211,16 +208,7 @@ void Crews::LoadCrew() {
 
 	for(int i=0;i<size;i++){
 
-		fin>>CrewName;
-		fin>>CrewID;
-		fin>>CrewType;
-
-		MyCrew.SetName(CrewName);
-		MyCrew.SetID(CrewID);
-		MyCrew.SetStatus(CrewType);
-
-		CrewList.push_back(MyCrew);
-
+		
 	}
 
 	fin.close();

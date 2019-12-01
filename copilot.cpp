@@ -21,14 +21,9 @@ void Copilot::PrintInfo() {
 	cout<<"Rating: "<<Rating<<endl;
 	cout<<"Cumulative Flight Hours: "<<flightHours<<endl;
 }
-void Copilot::Save(){
-	
-		ofstream fout;
-		fout.open("crew.data");
-		
+void Copilot::SaveInfo(ofstream &fout){
+		fout<<"copilot"<<endl;
+		Crew::SaveInfo(fout);
 		fout<<Rating<<endl;
 		fout<<flightHours<<endl;
-
-		fout.close();
-
 }

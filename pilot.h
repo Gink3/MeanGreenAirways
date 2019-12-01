@@ -19,7 +19,7 @@ class Pilot : public Crew {
 
 		void PrintInfo();
 
-		void Save();
+		void SaveInfo(ofstream &fout);
 };
 
 
