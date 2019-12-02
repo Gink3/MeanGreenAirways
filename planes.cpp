@@ -159,6 +159,19 @@ int Planes::FindPlane() {
 	cout<<"Plane Not Found"<<endl;
 	return -1;
 }
+int Planes::FindPlane(string s) {
+	int index =0;
+
+	for(vector<Plane>::iterator it=PlaneList.begin();it!=PlaneList.end();++it) {
+		if((*it).GetTailNum() == s) {
+			cout<<"Plane Found"<< endl;
+			return index;
+		}
+		index++;
+	}
+	cout<<"Plane not Found"<<endl;
+	return -1;
+}
 void Planes::PrintAllPlanes() {
 	
 	for(vector<Plane>::iterator it=PlaneList.begin();it!=PlaneList.end();++it) {

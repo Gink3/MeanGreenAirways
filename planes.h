@@ -18,6 +18,7 @@ class Planes {
     void EditPlane();
     void DeletePlane();
     int FindPlane();
+    int FindPlane(string s);
     void PrintAllPlanes();
     void PrintPlane();
 
