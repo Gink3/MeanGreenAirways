@@ -26,6 +26,7 @@ class Crews {
     int FindCrew(int id);    //finds crew with certain id; returns index of crew
     void PrintAllCrew();     //prints all crew members
     void PrintCrew();        //prints a user selected member
+    bool IDtaken(int id);
 
     void virtual SaveCrew();         //saves all crew data
     void virtual LoadCrew();         //loads all crew data

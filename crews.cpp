@@ -28,8 +28,15 @@ void Crews::AddCrew(){
 
 	cout<<"Enter Name: ";
 	cin>>name;
-	cout<<"Enter ID: ";
-	cin>>id;
+	bool t;
+	do {
+		cout<<"Enter ID: ";
+		cin>>id;
+		t=IDtaken(id);
+		if(t) {
+			cout<<"ID Taken"<<endl;
+		}
+	} while(t);
 	do {
 		cout<<"--------------------------------------"<<endl;
 		cout<<"| Select Status                      |"<<endl;
@@ -235,9 +242,11 @@ void Crews::EditCrew() {
 				cout<<"Name Set"<<endl;
 			}
 			case 1: {
-				cout<<"Enter ID: ";
-				cin>>id;
-				CrewList[index]->SetID(id);
+				do {
+					cout<<"Enter ID: ";
+					cin>>id;
+					CrewList[index]->SetID(id);
+				} while(IDtaken(id));
 				cout<<"ID set"<<endl;
 			}
 			case 2: {
@@ -303,10 +312,8 @@ void Crews::PrintAllCrew() {
 	
 	for(vector<Crew*>::iterator it=CrewList.begin();it!=CrewList.end();++it) {
 		
-	cout << "Crew Member: " << (*it)->GetName() << endl;
-	cout << "ID number: " << (*it)->GetID() << endl;
-	cout << "Status: " << (*it)->GetStatus() << endl;
-	cout << endl;
+		(*it)->PrintInfo();
+		cout << endl;
 
 	}
 }
@@ -324,6 +331,15 @@ void Crews::PrintCrew() {
 	cout << "Status: " << CrewList[index]->GetStatus() << endl;
 	cout << endl;
 
+}
+
+bool Crews::IDtaken(int id) {
+	for(vector<Crew*>::iterator it=CrewList.begin();it!=CrewList.end();it++) {
+		if((*it)->GetID()==id) {
+			return true;
+		}
+	}
+	return false;
 }
 
 void Crews::SaveCrew() {
@@ -357,7 +373,7 @@ void Crews::LoadCrew() {
 		
 
 		if(CrewType=="pilot") {
-			cout<<">>Loading Pilot Crew"<<endl;
+			cout<<">>Loading Pilot Crew";
 			Pilot *temp=new Pilot;
 			string Rating;
 			int flightHours;
@@ -370,8 +386,9 @@ void Crews::LoadCrew() {
 			temp->SetHours(flightHours);
 
 			CrewList.push_back(temp);
+			cout<<"<<Done"<<endl;
 		} else if (CrewType=="copilot") {
-			cout<<">>Loading Copilot Crew"<<endl;
+			cout<<">>Loading Copilot Crew";
 			Copilot *temp=new Copilot;
 			string Rating;
 			int flightHours;
@@ -384,8 +401,9 @@ void Crews::LoadCrew() {
 			temp->SetHours(flightHours);
 
 			CrewList.push_back(temp);
+			cout<<"<<Done"<<endl;
 		} else if (CrewType=="cabin") {
-			cout<<">>Loading Cabin Crew"<<endl;
+			cout<<">>Loading Cabin Crew";
 			Cabin *temp=new Cabin;
 			int p;
 			CabinPosition Pos;
@@ -399,6 +417,7 @@ void Crews::LoadCrew() {
 			temp->SetPosition(Pos);
 
 			CrewList.push_back(temp);
+			cout<<"<<Done"<<endl;
 		} else {
 			cout<<"Error: Invalid Crew Type"<<endl;
 		}

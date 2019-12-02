@@ -54,6 +54,7 @@ int Crew::GetStatusInt() {
 	}
 }
 
+
 void Crew::PrintInfo(){
 	cout<<"Name: "<<Name<<endl;
 	cout<<"ID Number: "<<IDNum<<endl;

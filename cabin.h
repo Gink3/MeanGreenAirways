@@ -20,6 +20,7 @@ class Cabin : public Crew {
 		string GetCrewType();
 		void PrintInfo();
 		void SaveInfo(ofstream &fout);
+		string StrPosition(CabinPosition n);
 };
 
 

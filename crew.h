@@ -25,6 +25,7 @@ class Crew {
     int GetID();
     string GetStatus();
     int GetStatusInt();
+    
 
     virtual void PrintInfo();
     virtual void SaveInfo(ofstream &fout);

@@ -17,14 +17,27 @@ string Cabin::GetCrewType() {
 }
 void Cabin::PrintInfo() {
 	Crew::PrintInfo();
-	cout<<"Position: "<<Position<<endl;
+
+	cout<<"Position: "<<StrPosition(Position)<<endl;
 }
 void Cabin::SaveInfo(ofstream &fout){
 	fout<<"cabin"<<endl;
 	Crew::SaveInfo(fout);	
-	fout<<Position<<endl;
-		
+	fout<<Position<<endl;	
 
-		
-
+}
+string Cabin::StrPosition(CabinPosition n) {
+	//int n = static_cast<int>(c);
+	switch(n) { 
+		case 0:
+			return "First Class";
+		case 1:
+			return "Business Class";
+		case 2:
+			return "Economy Front";
+		case 3:
+			return "Economy Rear";
+		case 4:
+			return "Lead";
+	}
 }
