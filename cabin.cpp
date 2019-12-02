@@ -27,7 +27,6 @@ void Cabin::SaveInfo(ofstream &fout){
 
 }
 string Cabin::StrPosition(CabinPosition n) {
-	//int n = static_cast<int>(c);
 	switch(n) { 
 		case 0:
 			return "First Class";

@@ -41,4 +41,7 @@ run:
 cleand:
 	rm *.data
 
+server_compile:
+	g++ *.cpp -o main
+
 
