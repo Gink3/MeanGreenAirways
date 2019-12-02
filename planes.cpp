@@ -225,7 +225,7 @@ void Planes::SavePlane() {
 
 
 void Planes::LoadPlane() {
-	
+	cout<<"Loading Planes"<<endl;
 	int size=0;
 	Plane MyPlane;
 	string PlaneMake;

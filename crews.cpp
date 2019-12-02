@@ -45,7 +45,7 @@ void Crews::AddCrew(){
 
 	switch(type) {
 		case 0: {
-			Pilot *temp;
+			Pilot *temp=new Pilot;
 			string Rating;
 			int flightHours;
 			do {
@@ -61,13 +61,13 @@ void Crews::AddCrew(){
 			temp->SetStatus(status);
 			temp->SetRating(Rating);
 			temp->SetHours(flightHours);
-
+			cout<<"Set"<<endl;
 			CrewList.push_back(temp);
 
 			break;
 		}
 		case 1: {
-			Copilot *temp;
+			Copilot *temp=new Copilot;
 			string Rating;
 			int flightHours;
 			do {
@@ -89,7 +89,7 @@ void Crews::AddCrew(){
 			break;
 		}
 		case 2: {
-			Cabin *temp;
+			Cabin *temp=new Cabin;
 			int p;
 			CabinPosition pos;
 
@@ -172,39 +172,43 @@ void Crews::EditCrew() {
 
 	if(c > 2) {
 		if(type=="Pilot") {
-			
+			Pilot *temp=static_cast<Pilot*>(CrewList[index]);
 			if (c == 3) {
 				do {
 					cout<<"Enter 5 character Rating: ";
 					cin>>rating;
-					CrewList[index]->SetRating(rating);
+					temp->SetRating(rating);
 					cout<<"Rating Set"<<endl;
 				} while(rating.length() != 5);
 			} else if (c == 4) {
 				cout<<"Enter flight hours: ";
 				cin>>flightHours;
-				CrewList[index]->SetHours(flightHours);
+				temp->SetHours(flightHours);
 				cout<<"Flight Hours Set"<<endl;
 			} else {
 				cout<<"Error choice = "<<c<<endl;
 			}
+			CrewList[index]=temp;
 		} else if (type=="Copilot") {
+			Copilot *temp=static_cast<Copilot*>(CrewList[index]);
 			if(c==3) {
 				do {
 					cout<<"Enter 4 character Rating: ";
 					cin>>rating;
-					CrewList[index]->SetRating(rating);
+					temp->SetRating(rating);
 					cout<<"Rating Set"<<endl;
 				} while(rating.length() != 4);
 			} else if (c == 4) {
 				cout<<"Enter flight hours: ";
 				cin>>flightHours;
-				CrewList[index]->SetHours(flightHours);
+				temp->SetHours(flightHours);
 				cout<<"Flight Hours Set"<<endl;
 			} else {
 				cout<<"Error choice = "<<c<<endl;
 			}
+			CrewList[index]=temp;
 		} else if (type =="Cabin") {
+			Cabin *temp=static_cast<Cabin*>(CrewList[index]);
 			do {
 				cout<<"--------------------------------------"<<endl;
 				cout<<"| Enter Crew Position                |"<<endl;
@@ -218,8 +222,9 @@ void Crews::EditCrew() {
 				cout<<"--------------------------------------"<<endl;
 				cin>>p;
 			} while (p > 4 || p < 0);
-			CrewList[index]->SetPosition(p);
+			temp->SetPosition(p);
 			cout<<"Position Set"<<endl;
+			CrewList[index]=temp;
 		}
 	} else {
 		switch(c) {
@@ -264,10 +269,10 @@ void Crews::DeleteCrew(){
 		if((*it)->GetID() == n) {
 			CrewList.erase(it);
 			cout << "Crew Member Deleted" <<endl;
-		} else {
-			cout<<"Crew Member not found"<<endl;
+			return;
 		}
 	}
+	cout<<"Crew Member not found"<<endl;
 }
 void Crews::DeleteCrew(int id) {
 
@@ -326,6 +331,7 @@ void Crews::SaveCrew() {
 	ofstream fout;
 	fout.open("crew.data");
 	fout<<CrewList.size()<<endl;
+	cout<<"Saving Crew Info";
 
 	for(int i=0;i<CrewList.size();i++) {
 
@@ -334,10 +340,11 @@ void Crews::SaveCrew() {
 
 	}
 	fout.close();
+	cout<<"<<Done"<<endl;
 }
 
 void Crews::LoadCrew() {
-
+	cout<<"Loading Crew"<<endl;
 	int CrewID, CrewStatus, size=0;
 	string CrewType, CrewName;
 
@@ -350,7 +357,8 @@ void Crews::LoadCrew() {
 		
 
 		if(CrewType=="pilot") {
-			Pilot *temp;
+			cout<<">>Loading Pilot Crew"<<endl;
+			Pilot *temp=new Pilot;
 			string Rating;
 			int flightHours;
 			fin>>Rating>>flightHours;
@@ -363,7 +371,8 @@ void Crews::LoadCrew() {
 
 			CrewList.push_back(temp);
 		} else if (CrewType=="copilot") {
-			Copilot *temp;
+			cout<<">>Loading Copilot Crew"<<endl;
+			Copilot *temp=new Copilot;
 			string Rating;
 			int flightHours;
 			fin>>Rating>>flightHours;
@@ -376,7 +385,8 @@ void Crews::LoadCrew() {
 
 			CrewList.push_back(temp);
 		} else if (CrewType=="cabin") {
-			Cabin *temp;
+			cout<<">>Loading Cabin Crew"<<endl;
+			Cabin *temp=new Cabin;
 			int p;
 			CabinPosition Pos;
 			

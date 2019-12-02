@@ -28,9 +28,6 @@ class Crew {
 
     virtual void PrintInfo();
     virtual void SaveInfo(ofstream &fout);
-    virtual void SetRating(string r) = 0;
-    virtual void SetHours(int h) = 0;
-    virtual void SetPosition(int p) =0;
     virtual string GetCrewType();
 };
 

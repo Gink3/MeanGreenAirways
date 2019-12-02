@@ -397,7 +397,7 @@ void Flights::SaveFlight() {
 	fout.close();
 }
 void Flights::LoadFlight() {
-
+	cout<<"Loading FLights"<<endl;
 	ifstream fin;
 	int size=0;
 	fin.open("flights.data");
