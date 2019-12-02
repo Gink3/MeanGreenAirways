@@ -399,7 +399,7 @@ void Flights::SaveFlight() {
 void Flights::LoadFlight() {
 
 	ifstream fin;
-	int size;
+	int size=0;
 	fin.open("flights.data");
 	fin>>size;
 

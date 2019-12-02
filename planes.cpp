@@ -226,7 +226,7 @@ void Planes::SavePlane() {
 
 void Planes::LoadPlane() {
 	
-	int size;
+	int size=0;
 	Plane MyPlane;
 	string PlaneMake;
 	string PlaneModel;

@@ -9,14 +9,8 @@ using namespace std;
 //given input from user
 void Crews::AddCrew(){
 
-	string name, status;
-	int type, id;
-
-	cout<<"Enter Crew type: "<<endl;
-	cout<<"1 - Pilot"<<endl;
-	cout<<"2 - Copilot"<<endl;
-	cout<<"3 - Cabin"<<endl;
-
+	string name;
+	int type, id, status;
 	
 	do {
 		cout<<"--------------------------------------"<<endl;
@@ -36,9 +30,18 @@ void Crews::AddCrew(){
 	cin>>name;
 	cout<<"Enter ID: ";
 	cin>>id;
-	cout<<"Enter Status: ";
-	cin>>status;
-
+	do {
+		cout<<"--------------------------------------"<<endl;
+		cout<<"| Select Status                      |"<<endl;
+		cout<<"--------------------------------------"<<endl;
+		cout<<"|                                    |"<<endl;
+		cout<<"| 0 - Available                      |"<<endl;
+		cout<<"| 1 - On Leave                       |"<<endl;
+		cout<<"| 2 - Sick                           |"<<endl;
+		cout<<"|                                    |"<<endl;
+		cout<<"--------------------------------------"<<endl;
+		cin>>status;
+	} while (status > 2 || status < 0);
 
 	switch(type) {
 		case 0: {
@@ -335,7 +338,7 @@ void Crews::SaveCrew() {
 
 void Crews::LoadCrew() {
 
-	int size, CrewID, CrewStatus;
+	int CrewID, CrewStatus, size=0;
 	string CrewType, CrewName;
 
 	ifstream fin;
